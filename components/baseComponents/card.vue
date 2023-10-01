@@ -6,7 +6,7 @@
       </v-col>
       <v-col>
         <v-row no-gutters>
-          <v-col > Name: {{ personagem.name }} </v-col>
+          <v-col> Name: {{ personagem.name }} </v-col>
         </v-row>
         <v-row>
           <v-col> Status: {{ personagem.status }} </v-col>
@@ -17,14 +17,17 @@
         <v-row>
           <v-col>
             Origin:
-            <a :href="personagem.origin.url">{{ personagem.origin.name }}</a>
+            <p @click="clickLocation(personagem.origin.url)">
+              {{ personagem.origin.name }}
+            </p>
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Last known location:<a :href="personagem.location.url">
-              {{ personagem.location.name }}</a
-            >
+            Last known location:
+            <p @click="clickLocation(personagem.origin.url)">
+              {{ personagem.location.name }}
+            </p>
           </v-col>
         </v-row>
       </v-col>
@@ -34,16 +37,23 @@
 
 <script setup>
 const props = defineProps(["personagem"]);
+
+const emit = defineEmits(["location"]);
+
+function clickLocation(location) {
+  const match = location.match(/\/(\d+)$/);
+
+  if (match && match[1]) emit("location", match[1]);
+}
 </script>
 
 <style lang="scss" scoped>
-
-.container{
+.container {
   width: 35rem;
   height: min-content;
   border: solid 1px green;
-  padding: .5rem;
-  border-radius: .5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   background-color: #565553;
 }
 </style>

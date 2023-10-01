@@ -16,7 +16,12 @@
           <baseComponents-carousel :character="handleResidents" />
         </v-col>
       </v-row>
-      <v-btn icon="$close" variant="text" class="btn-close" @click="buttonClick" />
+      <v-btn
+        icon="$close"
+        variant="text"
+        class="btn-close"
+        @click="buttonClick"
+      />
     </v-container>
   </v-overlay>
 </template>
@@ -26,12 +31,12 @@ import api from "~/server/api";
 const props = defineProps(["planet"]);
 
 const overlay = ref(true);
-const idLocation = ref(3);
+const idLocation = ref(props.planet.value);
 const idResidents = ref([]);
 const location = ref({});
 const residents = ref([]);
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(["close"]);
 
 const fetchLocation = async () =>
   await api.get(`location/${idLocation.value}`).then((response) => {
@@ -67,7 +72,7 @@ function setIdsResidents(residents) {
 }
 
 function buttonClick() {
-  emit('close')
+  emit("close");
 }
 
 const handleResidents = computed(() => {

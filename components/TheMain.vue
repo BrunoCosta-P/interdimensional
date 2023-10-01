@@ -23,19 +23,20 @@
         :key="personagem.name"
         :personagem="personagem"
         class="personagem"
+        @location="openModal"
       />
     </v-row>
     <v-row class="pagination">
       <v-col>
-        <v-pagination
-          v-model="page"
-          :length="totalPages"
-          rounded="0"
-        />
+        <v-pagination v-model="page" :length="totalPages" rounded="0" />
       </v-col>
     </v-row>
 
-    <baseComponents-modal v-if="showModal" @close="close"/>
+    <baseComponents-modal
+      v-if="showModal"
+      :planet="handleIdLocation"
+      @close="close"
+    />
   </div>
 </template>
 
@@ -48,7 +49,8 @@ const totalPages = ref(1);
 const listaStatus = ref(["Alive", "Dead", "Unknown"]);
 const status = ref("");
 const characterName = ref("");
-const showModal = ref(true)
+const showModal = ref(false);
+const idLocation = ref(1);
 
 const fetchCharacters = async () =>
   await api
@@ -62,13 +64,20 @@ const fetchCharacters = async () =>
 
 onBeforeMount(fetchCharacters);
 
-watch([characterName ,status,page], fetchCharacters);
+watch([characterName, status, page], fetchCharacters);
 
+const handleIdLocation = computed(() => {
+  return idLocation;
+});
 
-function close(){
-  showModal.value = false
+function openModal(id) {
+  idLocation.value = Number(id);
+  showModal.value = true;
 }
 
+function close() {
+  showModal.value = false;
+}
 </script>
 
 <style lang="scss" scoped>
