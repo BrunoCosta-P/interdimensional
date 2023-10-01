@@ -1,5 +1,10 @@
 <template>
   <div class="container-main" ref="inicio">
+    <v-row>
+      <v-col>
+        <p class="title">Discover the Multiverse!</p>
+      </v-col>
+    </v-row>
     <v-row justify="center" class="container-filter">
       <v-col>
         <v-text-field
@@ -84,13 +89,16 @@ function close() {
 .container-main {
   width: 100vw;
   height: min-content;
-  background: red;
+  background: #F26419;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+.title{
+  font-size: 2rem;
+}
   .container-filter {
     width: 50%;
   }

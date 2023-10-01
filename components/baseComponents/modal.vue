@@ -93,6 +93,7 @@ onBeforeMount(fetchLocation);
     width: 50vw;
     min-height: 90vh;
     height: fit-content;
+    max-height:100vh ;
     position: relative;
     .btn-close {
       position: absolute;

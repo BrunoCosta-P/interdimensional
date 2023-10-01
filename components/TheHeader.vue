@@ -1,22 +1,31 @@
 <template>
   <div class="container-header">
-
+    <p class="title">Interdimensional</p>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
+.container-header {
+  height: 40vh;
+  width: 100vw;
+  background: rgb(77, 141, 45);
+  background: linear-gradient(
+    279deg,
+    rgba(77, 141, 45, 1) 5%,
+    rgba(37, 37, 37, 1) 56%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.container-header{
-    height: 70vh;
-    width: 100vw;
-    background-color: aqua;
-    border: solid 1px red;
+  .title {
+    font-family: 'Glass Antiqua', cursive;
+    font-size: 6rem;
+    color: white;
+  }
 }
-
 </style>

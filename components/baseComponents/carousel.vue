@@ -13,7 +13,7 @@
           width="100"
         >
           <v-img :src="resident.image" />
-          <p>Name: {{ resident.name }}</p>
+          <p>{{ resident.name }}</p>
         </v-card>
       </v-slide-group-item>
     </v-slide-group>
