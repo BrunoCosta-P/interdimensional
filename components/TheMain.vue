@@ -34,6 +34,8 @@
         />
       </v-col>
     </v-row>
+
+    <baseComponents-modal v-if="showModal" @close="close"/>
   </div>
 </template>
 
@@ -46,6 +48,7 @@ const totalPages = ref(1);
 const listaStatus = ref(["Alive", "Dead", "Unknown"]);
 const status = ref("");
 const characterName = ref("");
+const showModal = ref(true)
 
 const fetchCharacters = async () =>
   await api
@@ -60,6 +63,11 @@ const fetchCharacters = async () =>
 onBeforeMount(fetchCharacters);
 
 watch([characterName ,status,page], fetchCharacters);
+
+
+function close(){
+  showModal.value = false
+}
 
 </script>
 
