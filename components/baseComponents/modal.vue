@@ -3,17 +3,27 @@
     <v-container class="container">
       <v-row>
         <v-col>
-          <v-img src="@/assests\img\Rick_planet.jpg" />
+          <v-img v-if="idLocation != null" src="@/assests\img\Rick_planet.jpg" />
+          <v-img v-else src="@/assests\img\No_Image.jpeg" />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>Name: {{ location.name }}</v-col>
-        <v-col>Type: {{ location.type }}</v-col>
-        <v-col>Dimension: {{ location.dimension }}</v-col>
+      <v-row justify="center">
+        <v-col cols="auto">Name: </v-col>
+        <v-col v-if="idLocation != null" cols="auto">{{ location.name }}</v-col>
+        <v-col v-else cols="auto">??????????????</v-col>
+        <v-col cols="auto">Type: </v-col>
+        <v-col v-if="idLocation != null" cols="auto">{{ location.type }}</v-col>
+        <v-col v-else cols="auto">??????????????</v-col>
+        <v-col cols="auto">Dimension: </v-col>
+        <v-col v-if="idLocation != null" cols="auto">{{ location.dimension }}</v-col>
+        <v-col v-else cols="auto">??????????????</v-col>
       </v-row>
       <v-row>
         <v-col>
-          <baseComponents-carousel :character="handleResidents" />
+          <baseComponents-carousel
+            v-if="idLocation != null"
+            :character="handleResidents"
+          />
         </v-col>
       </v-row>
       <v-btn
@@ -38,18 +48,20 @@ const residents = ref([]);
 
 const emit = defineEmits(["close"]);
 
-const fetchLocation = async () =>
-  await api.get(`location/${idLocation.value}`).then((response) => {
-    const resp = response.data;
-    location.value = {
-      dimension: resp.dimension,
-      type: resp.type,
-      name: resp.name,
-    };
-    idResidents.value = setIdsResidents(resp.residents);
+const fetchLocation = async () => {
+  if (idLocation.value != null)
+    await api.get(`location/${idLocation.value}`).then((response) => {
+      const resp = response.data;
+      location.value = {
+        dimension: resp.dimension,
+        type: resp.type,
+        name: resp.name,
+      };
+      idResidents.value = setIdsResidents(resp.residents);
 
-    fetchCharacter();
-  });
+      fetchCharacter();
+    });
+};
 
 const fetchCharacter = async () =>
   await api.get(`character/${idResidents.value}`).then((response) => {
@@ -78,7 +90,6 @@ function buttonClick() {
 const handleResidents = computed(() => {
   return residents;
 });
-
 onBeforeMount(fetchLocation);
 </script>
 
@@ -93,7 +104,7 @@ onBeforeMount(fetchLocation);
     width: 50vw;
     min-height: 90vh;
     height: fit-content;
-    max-height:100vh ;
+    max-height: 100vh;
     position: relative;
     .btn-close {
       position: absolute;

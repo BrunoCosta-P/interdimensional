@@ -76,7 +76,7 @@ const handleIdLocation = computed(() => {
 });
 
 function openModal(id) {
-  idLocation.value = Number(id);
+  idLocation.value = id;
   showModal.value = true;
 }
 

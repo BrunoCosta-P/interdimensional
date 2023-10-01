@@ -6,26 +6,38 @@
       </v-col>
       <v-col>
         <v-row no-gutters>
-          <v-col> Name: {{ personagem.name }} </v-col>
-        </v-row>
-        <v-row>
-          <v-col> Status: {{ personagem.status }} </v-col>
-        </v-row>
-        <v-row>
-          <v-col> Species: {{ personagem.species }}</v-col>
-        </v-row>
-        <v-row>
+          <p class=""></p>
+          <v-col cols="3"> Name: </v-col>
           <v-col>
-            Origin:
-            <p @click="clickLocation(personagem.origin.url)">
+            <p>{{ personagem.name }}</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="3"> Status: </v-col>
+          <v-col
+            ><v-chip :color="setColor(personagem.status)">
+              {{ personagem.status }}</v-chip
+            ></v-col
+          >
+        </v-row>
+        <v-row>
+          <v-col cols="3"> Species: </v-col>
+          <v-col>
+            <p>{{ personagem.species }}</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="3"> Origin: </v-col>
+          <v-col >
+            <p @click="clickLocation(personagem.origin.url)" class="origin">
               {{ personagem.origin.name }}
             </p>
           </v-col>
         </v-row>
         <v-row>
+          <v-col cols="auto"> Last location: </v-col>
           <v-col>
-            Last known location:
-            <p @click="clickLocation(personagem.origin.url)">
+            <p @click="clickLocation(personagem.origin.url)" class="origin">
               {{ personagem.location.name }}
             </p>
           </v-col>
@@ -44,6 +56,22 @@ function clickLocation(location) {
   const match = location.match(/\/(\d+)$/);
 
   if (match && match[1]) emit("location", match[1]);
+  else emit("location", null)
+}
+
+function setColor(status) {
+  console.log(status);
+
+  switch (status) {
+    case "Dead":
+      return "red";
+
+    case "Alive":
+      return "green";
+
+    default:
+      break;
+  }
 }
 </script>
 
@@ -55,5 +83,10 @@ function clickLocation(location) {
   padding: 0.5rem;
   border-radius: 0.5rem;
   background-color: #565553;
+
+  .origin{
+    color: blue;
+    cursor: pointer;
+  }
 }
 </style>

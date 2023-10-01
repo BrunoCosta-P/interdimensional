@@ -12,7 +12,6 @@ export default {};
 .container-header {
   height: 40vh;
   width: 100vw;
-  background: rgb(77, 141, 45);
   background: linear-gradient(
     279deg,
     rgba(77, 141, 45, 1) 5%,
