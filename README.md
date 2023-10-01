@@ -1,75 +1,47 @@
-# Nuxt 3 Minimal Starter
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Interdimensional
 
-## Setup
+Bem-vindo ao **Interdimensional**, uma aplicação web construída com o framework Vue 3 e o framework de componentes Vuetify, que permite explorar informações sobre os personagens da série "Rick and Morty". Você pode filtrar os personagens por nome ou status para encontrar seus favoritos de todas as dimensões.
 
-Make sure to install the dependencies:
+## Funcionalidades
 
-```bash
-# npm
-npm install
+- Visualize informações detalhadas sobre personagens da série "Rick and Morty".
+- Filtragem de personagens por nome.
+- Filtragem de personagens por status (vivo, morto ou desconhecido).
 
-# pnpm
-pnpm install
+## Tecnologias Utilizadas
 
-# yarn
-yarn install
+- Vue 3
+- Vuetify
+- Nuxt 3
 
-# bun
-bun install
-```
+## Instalação
 
-## Development Server
+Para executar este projeto localmente, siga estas etapas:
 
-Start the development server on `http://localhost:3000`:
+1. Clone este repositório: `git clone https://github.com/seu-usuario/interdimensional.git`
+2. Navegue até o diretório do projeto: `cd interdimensional`
+3. Instale as dependências: `npm install`
+4. Execute o projeto: `npm run dev`
 
-```bash
-# npm
-npm run dev
+Agora você pode acessar a aplicação em [http://localhost:3000](http://localhost:3000).
 
-# pnpm
-pnpm run dev
+## Como Usar
 
-# yarn
-yarn dev
+- Na página inicial, você verá uma lista de personagens.
+- Use o campo de filtro por nome para encontrar personagens específicos digitando seus nomes.
+- Use o filtro por status para filtrar personagens por seu estado (vivo, morto ou desconhecido).
+- Ao entrar em um card de personagem, clique nos campos que indicam locais para abrir um modal.
+- O modal exibirá informações detalhadas sobre o local e seus habitantes conhecidos.
 
-# bun
-bun run dev
-```
+## Contribuição
 
-## Production
+Se você deseja contribuir para o projeto, siga estas etapas:
 
-Build the application for production:
+1. Faça um fork do repositório.
+2. Crie uma branch com sua feature: `git checkout -b minha-feature`
+3. Faça commit das suas alterações: `git commit -m 'Adicionei uma nova feature'`
+4. Faça push para a branch: `git push origin minha-feature`
+5. Abra um pull request.
 
-```bash
-# npm
-npm run build
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
