@@ -60,8 +60,6 @@ function clickLocation(location) {
 }
 
 function setColor(status) {
-  console.log(status);
-
   switch (status) {
     case "Dead":
       return "red";
